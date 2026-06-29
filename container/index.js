@@ -12,10 +12,10 @@ const RESOLUTIONS = [
 ];
 
 const s3Client = new S3Client({
-    region: "ap-south-1",
+    region: process.env.AWS_REGION,
     credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY,
-        secretAccessKey: process.env.AWS_SECRET_KEY,
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     },
 });
 
@@ -53,7 +53,7 @@ async function init() {
             .on("start", () => console.log(`Transcoding started: ${resolution.name}`))            
             .on("end", async () => {
                 const putCommand = new PutObjectCommand({
-                    Bucket: "process.env.BUCKET",
+                    Bucket: BUCKET_NAME,
                     Key: s3Key,
                     Body: fsOld.createReadStream(path.resolve(outputFile))
                 });
