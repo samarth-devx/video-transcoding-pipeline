@@ -69,7 +69,7 @@ Before running the project, ensure you have the following installed:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/video-transcoding-pipeline.git
+git clone https://github.com/samarth-devx/video-transcoding-pipeline.git
 cd video-transcoding-pipeline
 ```
 
